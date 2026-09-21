@@ -104,8 +104,6 @@ nav a:hover {
 /* ==========================================================================
    3. ESTRUTURA DA LANDING PAGE (INDEX.HTML)
    ========================================================================== */
-
-/* Hero Section */
 .hero-section {
   padding: 4rem 0 3rem 0;
 }
@@ -229,10 +227,9 @@ nav a:hover {
   gap: 2rem;
   padding: 1.75rem;
   background-color: var(--white);
-  border-left: 4px solid var(--primary-color);
   border-radius: 0 8px 8px 0;
   border: 1px solid var(--border-color);
-  border-left-width: 4px;
+  border-left: 4px solid var(--primary-color);
 }
 
 .pilar-numero {
@@ -248,7 +245,7 @@ nav a:hover {
 }
 
 /* ==========================================================================
-   4. CARROSSEL AUTOMÁTICO DE DEPOIMENTOS (SEM MARCADORES/BULLETS)
+   4. CARROSSEL AUTOMÁTICO DE DEPOIMENTOS
    ========================================================================== */
 .depoimento-section {
   background-color: var(--white);
@@ -273,7 +270,6 @@ nav a:hover {
   animation: deslizarDepoimentos 22s infinite ease-in-out;
 }
 
-/* Pausa a transição ao passar o mouse por cima */
 .carrossel-auto-container:hover .carrossel-auto-track {
   animation-play-state: paused;
 }
@@ -316,7 +312,7 @@ nav a:hover {
 }
 
 /* ==========================================================================
-   5. SEÇÃO DE TRANSPARÊNCIA E RELATÓRIO DE IMPACTO (AJUSTADO E ENQUADRADO)
+   5. SEÇÃO DE TRANSPARÊNCIA E RELATÓRIO DE IMPACTO
    ========================================================================== */
 .transparencia-cta-section {
   background-color: var(--white);
@@ -373,7 +369,6 @@ nav a:hover {
   flex-wrap: wrap;
 }
 
-/* Cartão Interno de Destaques */
 .transparencia-destaque-box {
   background-color: var(--bg-light);
   border: 1px solid var(--border-color);
@@ -690,4 +685,48 @@ small {
   .campo-grupo {
     flex: 1 1 100%;
   }
+}
+
+/* ==========================================================================
+   COMPONENTE: TOAST / NOTIFICAÇÃO FLUTUANTE
+   ========================================================================== */
+.toast-notificacao {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--text-main);
+  color: var(--white);
+  padding: 0.85rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 0.9rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+
+/* ==========================================================================
+   COMPONENTE: BADGES DE STATUS (PÁGINA DE PROJETOS)
+   ========================================================================== */
+.badge-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 50px;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.badge-ativo {
+  background-color: rgba(63, 111, 79, 0.15);
+  color: var(--primary-color);
+}
+
+.badge-pausado {
+  background-color: rgba(200, 120, 74, 0.15);
+  color: var(--accent-color);
 }
