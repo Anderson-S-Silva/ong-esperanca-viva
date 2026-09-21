@@ -1,0 +1,693 @@
+/* ==========================================================================
+   1. RESET E VARIÁVEIS DE CORES
+   ========================================================================== */
+:root {
+  --primary-color: #3f6f4f;       /* Verde institucional */
+  --primary-hover: #31583e;       /* Verde escuro */
+  --accent-color: #c8784a;        /* Terracota */
+  --accent-hover: #a95f38;        /* Terracota escuro */
+  --secondary-color: #eee8dc;     /* Bege claro */
+  --text-main: #2f3a32;           /* Verde-grafite */
+  --text-muted: #6f766f;          /* Cinza esverdeado */
+  --bg-light: #f5f1e8;            /* Creme de Fundo */
+  --white: #fffdf9;               /* Branco quente */
+  --border-color: #ddd5c6;        /* Bege acinzentado */
+  --focus-ring: #7da286;          /* Verde suave */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text-main);
+  background-color: var(--bg-light);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Container Global Padrão */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+.header-site {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container img {
+  display: block;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+
+nav a[aria-current="page"],
+nav a:hover {
+  color: var(--primary-color);
+}
+
+.btn-nav {
+  background-color: var(--primary-color);
+  color: var(--white) !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 6px;
+  transition: background-color 0.2s !important;
+}
+
+.btn-nav:hover {
+  background-color: var(--primary-hover) !important;
+}
+
+/* ==========================================================================
+   3. ESTRUTURA DA LANDING PAGE (INDEX.HTML)
+   ========================================================================== */
+
+/* Hero Section */
+.hero-section {
+  padding: 4rem 0 3rem 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.tag-destaque {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-color);
+  margin-bottom: 0.75rem;
+}
+
+.hero-textos h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: var(--primary-color);
+  margin-bottom: 1.25rem;
+}
+
+.hero-descricao {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.btn-link {
+  color: var(--primary-color);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.hero-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Métricas de Impacto */
+.metricas-banner {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 3rem 0;
+}
+
+.metricas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.metrica-numero {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #f5f1e8; 
+  line-height: 1.1;
+}
+
+.metrica-texto {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Pilares de Atuação */
+.pilares-section {
+  padding: 5rem 0;
+}
+
+.secao-cabecalho {
+  margin-bottom: 2.5rem;
+}
+
+.secao-cabecalho.text-center {
+  text-align: center;
+}
+
+.secao-subtitulo {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-color);
+  display: block;
+}
+
+.secao-cabecalho h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.pilares-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pilar-linha {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1.75rem;
+  background-color: var(--white);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 0 8px 8px 0;
+  border: 1px solid var(--border-color);
+  border-left-width: 4px;
+}
+
+.pilar-numero {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  line-height: 1;
+}
+
+.pilar-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+/* ==========================================================================
+   4. CARROSSEL AUTOMÁTICO DE DEPOIMENTOS (SEM MARCADORES/BULLETS)
+   ========================================================================== */
+.depoimento-section {
+  background-color: var(--white);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 4.5rem 0;
+}
+
+.carrossel-auto-container {
+  max-width: 850px;
+  margin: 2rem auto 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carrossel-auto-track {
+  display: flex;
+  width: 600%;
+  margin: 0;
+  padding: 0;
+  list-style: none !important;
+  animation: deslizarDepoimentos 22s infinite ease-in-out;
+}
+
+/* Pausa a transição ao passar o mouse por cima */
+.carrossel-auto-container:hover .carrossel-auto-track {
+  animation-play-state: paused;
+}
+
+.depoimento-card-auto {
+  width: 16.666%;
+  list-style: none !important;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.depoimento-card-auto blockquote p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.depoimento-card-auto cite {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--primary-color);
+}
+
+@keyframes deslizarDepoimentos {
+  0%, 16% { transform: translateX(0%); }
+  20%, 36% { transform: translateX(-16.666%); }
+  40%, 56% { transform: translateX(-33.333%); }
+  60%, 76% { transform: translateX(-50%); }
+  80%, 96% { transform: translateX(-66.666%); }
+  100% { transform: translateX(-83.333%); }
+}
+
+/* ==========================================================================
+   5. SEÇÃO DE TRANSPARÊNCIA E RELATÓRIO DE IMPACTO (AJUSTADO E ENQUADRADO)
+   ========================================================================== */
+.transparencia-cta-section {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin-top: 3.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.transparencia-container {
+  width: 100%;
+}
+
+.transparencia-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.transparencia-texto {
+  display: flex;
+  flex-direction: column;
+}
+
+.transparencia-texto .secao-subtitulo {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-color);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.transparencia-texto h2 {
+  font-size: 1.85rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+.transparencia-texto p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+
+.transparencia-botoes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Cartão Interno de Destaques */
+.transparencia-destaque-box {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary-color);
+  padding: 1.75rem;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.transparencia-destaque-box h3 {
+  font-size: 1.15rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.transparencia-destaque-box ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.transparencia-destaque-box li {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   6. PÁGINA DE PROJETOS (PROJETOS.HTML)
+   ========================================================================== */
+.secao-projetos-page {
+  padding: 3rem 1.5rem 4rem 1.5rem;
+}
+
+.projetos-intro {
+  margin-bottom: 2.5rem;
+}
+
+.projetos-intro h1 {
+  font-size: 2.25rem;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
+
+.projetos-intro p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 850px;
+}
+
+.secao-titulo-interna {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.card-projeto {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.card-projeto h3 {
+  font-size: 1.35rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.tag-publico {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.projeto-media {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  text-align: center;
+}
+
+.projeto-media img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.projeto-media figcaption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   7. BOTÕES E FORMULÁRIO DE CADASTRO (CADASTRO.HTML)
+   ========================================================================== */
+.btn {
+  padding: 0.8rem 1.75rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primario {
+  background-color: var(--accent-color);
+  color: var(--white);
+}
+
+.btn-primario:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-secundario {
+  background-color: var(--secondary-color);
+  color: var(--text-main);
+}
+
+.btn-secundario:hover {
+  background-color: #e3dccd;
+}
+
+fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--white);
+}
+
+legend {
+  font-weight: 700;
+  color: var(--primary-color);
+  padding: 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 calc(50% - 1.25rem);
+  min-width: 250px;
+}
+
+.campo-grupo.col-12 {
+  flex: 1 1 100%;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: var(--white);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(63, 111, 79, 0.2);
+}
+
+small {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.acoes-form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   8. RODAPÉ MINIMALISTA E COMPACTO
+   ========================================================================== */
+.footer-site {
+  background-color: var(--white);
+  border-top: 1px solid var(--border-color);
+  padding: 1.25rem 0;
+  margin-top: 2rem;
+}
+
+.footer-compacto-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.footer-copy p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.footer-contato-linha {
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-contato-linha a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-contato-linha a:hover {
+  text-decoration: underline;
+}
+
+.footer-contato-linha .divisor {
+  color: var(--border-color);
+  font-size: 0.75rem;
+}
+
+.footer-links-linha ul {
+  display: flex;
+  list-style: none;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links-linha a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.footer-links-linha a:hover {
+  color: var(--primary-color);
+}
+
+/* ==========================================================================
+   9. RESPONSIVIDADE (MOBILE & TABLETS)
+   ========================================================================== */
+@media (max-width: 850px) {
+  .hero-grid,
+  .transparencia-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .transparencia-cta-section {
+    padding: 1.5rem;
+  }
+  
+  .hero-botoes, .hero-cta, .transparencia-botoes {
+    justify-content: center;
+  }
+
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pilar-linha {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-compacto-container {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .footer-contato-linha {
+    justify-content: center;
+  }
+
+  .campo-grupo {
+    flex: 1 1 100%;
+  }
+}

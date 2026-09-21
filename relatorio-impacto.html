@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatório Anual de Impacto Social - ONG Esperança Viva</title>
+  <!-- Favicon do Site -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <style>
+    /* Configurações Globais e de Impressão */
+    @page {
+      size: A4 portrait;
+      margin: 15mm;
+    }
+
+    :root {
+      --primary: #3f6f4f;
+      --primary-dark: #2f533b;
+      --accent: #c8784a;
+      --bg-light: #f5f1e8;
+      --white: #ffffff;
+      --text-main: #2f3a32;
+      --text-muted: #6f766f;
+      --border: #ddd5c6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-main);
+      background-color: #e5e5e5;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Contentor da Página A4 */
+    .pagina {
+      width: 210mm;
+      height: 297mm;
+      padding: 18mm 20mm;
+      margin: 10px auto;
+      background-color: var(--white);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      page-break-after: always;
+    }
+
+    /* Cabeçalho das Páginas Internas */
+    .topo-relatorio {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .topo-relatorio img {
+      height: 40px;
+      width: auto;
+    }
+
+    .topo-relatorio .meta-doc {
+      text-align: right;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .topo-relatorio .meta-doc strong {
+      color: var(--primary);
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    /* Títulos e Seções */
+    h1.titulo-secao {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    p.descricao-secao {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Cards de Métricas em Grid Fixo */
+    .grid-metricas {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .card-metrica {
+      background-color: var(--bg-light);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 14px 8px;
+      text-align: center;
+    }
+
+    .card-metrica .valor {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .card-metrica .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Gráficos de Progresso Visual */
+    .secao-bloco {
+      margin-bottom: 24px;
+    }
+
+    .secao-bloco h2 {
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      border-left: 3px solid var(--accent);
+      padding-left: 8px;
+    }
+
+    .item-progresso {
+      margin-bottom: 10px;
+    }
+
+    .item-progresso .labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .barra-trilho {
+      height: 10px;
+      background-color: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .barra-preenchimento {
+      height: 100%;
+      background-color: var(--primary);
+      border-radius: 4px;
+    }
+
+    /* Tabela Institucional */
+    table.tabela-dados {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+
+    table.tabela-dados th {
+      background-color: var(--primary);
+      color: var(--white);
+      text-align: left;
+      padding: 8px 12px;
+      font-weight: 600;
+    }
+
+    table.tabela-dados td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.tabela-dados tr:nth-child(even) {
+      background-color: var(--bg-light);
+    }
+
+    /* Rodapé da Página */
+    .rodape-documento {
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Botão Flutuante de Impressão */
+    .btn-print {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 9999;
+    }
+
+    @media print {
+      body {
+        background-color: white;
+      }
+      .pagina {
+        margin: 0;
+        box-shadow: none;
+        height: 297mm;
+        width: 210mm;
+      }
+      .btn-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn-print" onclick="window.print()">🖨️ Salvar / Imprimir PDF</button>
+
+  <!-- PÁGINA ÚNICA / DOCUMENTO EXECUTIVO -->
+  <div class="pagina">
+    
+    <div>
+      <!-- Topo Institucional -->
+      <header class="topo-relatorio">
+        <img src="assets/img/logo.svg" alt="ONG Esperança Viva">
+        <div class="meta-doc">
+          <strong>Relatório Anual de Impacto</strong>
+          <span>Exercício 2025 / 2026</span>
+        </div>
+      </header>
+
+      <!-- Título Principal -->
+      <section>
+        <h1 class="titulo-secao">1. Resumo Executivo e Indicadores</h1>
+        <p class="descricao-secao">
+          Demonstrativo consolidado das metas sociais atingidas e da aplicação transparente de recursos nas frentes de educação, segurança alimentar e capacitação profissional.
+        </p>
+
+        <!-- Grid de Métricas Limpo -->
+        <div class="grid-metricas">
+          <div class="card-metrica">
+            <span class="valor">+1.500</span>
+            <span class="label">Famílias</span>
+          </div>
+          <div class="card-metrica">
+            <span class="valor">10 t</span>
+            <span class="label">Alimentos</span>
+          </div>
+          <div class="card-metrica">
+            <span class="valor">+350</span>
+            <span class="label">Crianças</span>
+          </div>
+          <div class="card-metrica">
+            <span class="valor">45%</span>
+            <span class="label">Inserção</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Indicadores de Desempenho -->
+      <section class="secao-bloco">
+        <h2>Eficácia dos Programas Sociais</h2>
+
+        <div class="item-progresso">
+          <div class="labels">
+            <span>Projeto Futuro Brilhante (Frequência Escolar)</span>
+            <span>94%</span>
+          </div>
+          <div class="barra-trilho">
+            <div class="barra-preenchimento" style="width: 94%;"></div>
+          </div>
+        </div>
+
+        <div class="item-progresso">
+          <div class="labels">
+            <span>Projeto Prato Cheio (Atendimento Continuado)</span>
+            <span>88%</span>
+          </div>
+          <div class="barra-trilho">
+            <div class="barra-preenchimento" style="width: 88%; background-color: var(--accent);"></div>
+          </div>
+        </div>
+
+        <div class="item-progresso">
+          <div class="labels">
+            <span>Projeto Gerando Autonomia (Conclusão de Cursos)</span>
+            <span>76%</span>
+          </div>
+          <div class="barra-trilho">
+            <div class="barra-preenchimento" style="width: 76%;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabela Financeira -->
+      <section class="secao-bloco">
+        <h2>2. Aplicação de Recursos Financeiros</h2>
+        
+        <table class="tabela-dados">
+          <thead>
+            <tr>
+              <th>Origem dos Recursos</th>
+              <th>Destinação Principal</th>
+              <th style="text-align: right;">Total (R$)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Doações Individuais</td>
+              <td>Cestas Básicas e Logística de Alimentos</td>
+              <td style="text-align: right;">45.200,00</td>
+            </tr>
+            <tr>
+              <td>Parcerias Corporativas</td>
+              <td>Material Didático e Informática</td>
+              <td style="text-align: right;">38.000,00</td>
+            </tr>
+            <tr>
+              <td>Eventos Beneficentes</td>
+              <td>Manutenção da Sede Comunitária</td>
+              <td style="text-align: right;">18.500,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Rodapé Limpo -->
+    <footer class="rodape-documento">
+      <span>ONG Esperança Viva • CNPJ 00.000.000/0001-00</span>
+      <span>www.esperancaviva.org.br</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
