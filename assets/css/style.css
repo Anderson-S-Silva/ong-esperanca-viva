@@ -1,7 +1,8 @@
 /* ==========================================================================
-   1. RESET E VARIÁVEIS DE CORES
+   1. RESET E VARIÁVEIS DE CORES E ESPAÇAMENTOS (DESIGN TOKENS)
    ========================================================================== */
 :root {
+  /* Cores Institucionais */
   --primary-color: #3f6f4f;       /* Verde institucional */
   --primary-hover: #31583e;       /* Verde escuro */
   --accent-color: #c8784a;        /* Terracota */
@@ -13,6 +14,13 @@
   --white: #fffdf9;               /* Branco quente */
   --border-color: #ddd5c6;        /* Bege acinzentado */
   --focus-ring: #7da286;          /* Verde suave */
+
+  /* Tokens de Espaçamento Padronizados */
+  --space-1: 0.35rem;
+  --space-2: 0.75rem;
+  --space-3: 1.25rem;
+  --space-4: 1.75rem;
+  --space-5: 2.5rem;
 }
 
 * {
@@ -43,16 +51,20 @@ body {
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--space-3);
 }
 
 /* ==========================================================================
-   2. CABEÇALHO E NAVEGAÇÃO
+   2. CABEÇALHO E NAVEGAÇÃO — DESKTOP (INLINE) & MOBILE (HAMBÚRGUER)
+   Estratégia Responsiva e Estados Interativos:
+   - Desktop: Menu horizontal inline, com indicadores de estado ativo e transições suaves.
+   - Mobile: Menu hambúrguer interativo controlado por input[type="checkbox"] oculto,
+     gerindo os estados de abertura/fechamento e foco por teclado de forma semântica.
    ========================================================================== */
 .header-site {
   background-color: var(--white);
   border-bottom: 1px solid var(--border-color);
-  padding: 1rem 0;
+  padding: var(--space-2) 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -69,36 +81,53 @@ body {
   display: block;
 }
 
-nav ul {
+/* Navegação Padrão (Desktop) */
+.nav-menu {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: var(--space-3);
   align-items: center;
 }
 
-nav a {
+.nav-menu a {
   text-decoration: none;
   color: var(--text-main);
   font-weight: 600;
-  padding: 0.5rem 0;
-  transition: color 0.2s;
+  padding: var(--space-1) 0;
+  transition: color 0.2s, background-color 0.2s;
+  outline: none;
 }
 
-nav a[aria-current="page"],
-nav a:hover {
+/* Estados Interativos: Hover e Foco por Teclado */
+.nav-menu a:hover,
+.nav-menu a:focus {
   color: var(--primary-color);
+}
+
+/* Estado Ativo (Página Atual - WAI-ARIA) */
+.nav-menu a[aria-current="page"] {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 .btn-nav {
   background-color: var(--primary-color);
   color: var(--white) !important;
-  padding: 0.5rem 1.25rem !important;
+  padding: var(--space-1) 1.25rem !important;
   border-radius: 6px;
   transition: background-color 0.2s !important;
 }
 
-.btn-nav:hover {
+.btn-nav:hover,
+.btn-nav:focus {
   background-color: var(--primary-hover) !important;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Controlo do Menu Hambúrguer (Oculto em Desktop) */
+.menu-toggle-checkbox,
+.menu-toggle-label {
+  display: none;
 }
 
 /* ==========================================================================
@@ -122,26 +151,27 @@ nav a:hover {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--accent-color);
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-2);
 }
 
 .hero-textos h1 {
   font-size: 2.5rem;
   line-height: 1.2;
   color: var(--primary-color);
-  margin-bottom: 1.25rem;
+  margin-bottom: var(--space-3);
 }
 
 .hero-descricao {
   font-size: 1.1rem;
   color: var(--text-muted);
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-5);
 }
 
 .hero-cta {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--space-3);
+  flex-wrap: wrap;
 }
 
 .btn-link {
@@ -165,13 +195,13 @@ nav a:hover {
 .metricas-banner {
   background-color: var(--primary-color);
   color: var(--white);
-  padding: 3rem 0;
+  padding: var(--space-5) 0;
 }
 
 .metricas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: var(--space-4);
   text-align: center;
 }
 
@@ -194,7 +224,7 @@ nav a:hover {
 }
 
 .secao-cabecalho {
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--space-5);
 }
 
 .secao-cabecalho.text-center {
@@ -218,14 +248,14 @@ nav a:hover {
 .pilares-lista {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-3);
 }
 
 .pilar-linha {
   display: flex;
   align-items: flex-start;
-  gap: 2rem;
-  padding: 1.75rem;
+  gap: var(--space-4);
+  padding: var(--space-4);
   background-color: var(--white);
   border-radius: 0 8px 8px 0;
   border: 1px solid var(--border-color);
@@ -241,7 +271,7 @@ nav a:hover {
 
 .pilar-info h3 {
   font-size: 1.25rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: var(--space-1);
 }
 
 /* ==========================================================================
@@ -256,7 +286,7 @@ nav a:hover {
 
 .carrossel-auto-container {
   max-width: 850px;
-  margin: 2rem auto 0 auto;
+  margin: var(--space-5) auto 0 auto;
   overflow: hidden;
   border-radius: 12px;
 }
@@ -281,7 +311,7 @@ nav a:hover {
   border: 1px solid var(--border-color);
   border-left: 5px solid var(--accent-color);
   border-radius: 8px;
-  padding: 2.5rem;
+  padding: var(--space-5);
   box-sizing: border-box;
   text-align: center;
 }
@@ -291,7 +321,7 @@ nav a:hover {
   font-style: italic;
   color: var(--text-main);
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-3);
 }
 
 .depoimento-card-auto cite {
@@ -319,7 +349,7 @@ nav a:hover {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   margin-top: 3.5rem;
-  padding: 2.5rem;
+  padding: var(--space-5);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
 }
 
@@ -330,7 +360,7 @@ nav a:hover {
 .transparencia-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 2.5rem;
+  gap: var(--space-5);
   align-items: center;
 }
 
@@ -345,27 +375,27 @@ nav a:hover {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--accent-color);
-  margin-bottom: 0.35rem;
+  margin-bottom: var(--space-1);
   display: block;
 }
 
 .transparencia-texto h2 {
   font-size: 1.85rem;
   color: var(--primary-color);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-3);
   line-height: 1.25;
 }
 
 .transparencia-texto p {
   font-size: 1rem;
   color: var(--text-muted);
-  margin-bottom: 1.75rem;
+  margin-bottom: var(--space-4);
   line-height: 1.6;
 }
 
 .transparencia-botoes {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-3);
   flex-wrap: wrap;
 }
 
@@ -373,7 +403,7 @@ nav a:hover {
   background-color: var(--bg-light);
   border: 1px solid var(--border-color);
   border-left: 4px solid var(--primary-color);
-  padding: 1.75rem;
+  padding: var(--space-4);
   border-radius: 8px;
   box-sizing: border-box;
 }
@@ -381,7 +411,7 @@ nav a:hover {
 .transparencia-destaque-box h3 {
   font-size: 1.15rem;
   color: var(--primary-color);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-3);
 }
 
 .transparencia-destaque-box ul {
@@ -390,7 +420,7 @@ nav a:hover {
   margin: 0 !important;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: var(--space-2);
 }
 
 .transparencia-destaque-box li {
@@ -400,20 +430,20 @@ nav a:hover {
 }
 
 /* ==========================================================================
-   6. PÁGINA DE PROJETOS (PROJETOS.HTML)
+   6. PÁGINA DE PROJETOS E FAMÍLIA DE FEEDBACK (BADGES)
    ========================================================================== */
 .secao-projetos-page {
-  padding: 3rem 1.5rem 4rem 1.5rem;
+  padding: 3rem var(--space-3) 4rem var(--space-3);
 }
 
 .projetos-intro {
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--space-5);
 }
 
 .projetos-intro h1 {
   font-size: 2.25rem;
   color: var(--primary-color);
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-2);
 }
 
 .projetos-intro p {
@@ -425,20 +455,20 @@ nav a:hover {
 .secao-titulo-interna {
   font-size: 1.5rem;
   color: var(--primary-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-4);
 }
 
 .projetos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  gap: var(--space-4);
 }
 
 .card-projeto {
   background-color: var(--white);
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  padding: 1.75rem;
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
@@ -447,18 +477,18 @@ nav a:hover {
 .card-projeto h3 {
   font-size: 1.35rem;
   color: var(--primary-color);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-1);
 }
 
 .tag-publico {
   font-size: 0.9rem;
   color: var(--text-muted);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-3);
 }
 
 .projeto-media {
   margin-top: auto;
-  padding-top: 1.25rem;
+  padding-top: var(--space-3);
   text-align: center;
 }
 
@@ -472,11 +502,33 @@ nav a:hover {
 .projeto-media figcaption {
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin-top: 0.5rem;
+  margin-top: var(--space-1);
+}
+
+/* Família de Feedbacks: Badges padronizadas */
+.badge-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 50px;
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.5px;
+}
+
+.badge-ativo {
+  background-color: rgba(63, 111, 79, 0.15);
+  color: var(--primary-color);
+}
+
+.badge-pausado {
+  background-color: rgba(200, 120, 74, 0.15);
+  color: var(--accent-color);
 }
 
 /* ==========================================================================
-   7. BOTÕES E FORMULÁRIO DE CADASTRO (CADASTRO.HTML)
+   7. BOTÕES E FORMULÁRIO DE CADASTRO
    ========================================================================== */
 .btn {
   padding: 0.8rem 1.75rem;
@@ -495,8 +547,10 @@ nav a:hover {
   color: var(--white);
 }
 
-.btn-primario:hover {
+.btn-primario:hover,
+.btn-primario:focus {
   background-color: var(--accent-hover);
+  box-shadow: 0 0 0 3px rgba(200, 120, 74, 0.3);
 }
 
 .btn-secundario {
@@ -504,15 +558,17 @@ nav a:hover {
   color: var(--text-main);
 }
 
-.btn-secundario:hover {
+.btn-secundario:hover,
+.btn-secundario:focus {
   background-color: #e3dccd;
+  box-shadow: 0 0 0 3px rgba(238, 232, 220, 0.5);
 }
 
 fieldset {
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  padding: 1.75rem;
-  margin-bottom: 1.5rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
   background-color: var(--white);
 }
 
@@ -526,15 +582,15 @@ legend {
 .form-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
-  margin-top: 0.5rem;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
 }
 
 .campo-grupo {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  flex: 1 1 calc(50% - 1.25rem);
+  gap: var(--space-1);
+  flex: 1 1 calc(50% - var(--space-3));
   min-width: 250px;
 }
 
@@ -572,8 +628,26 @@ small {
 
 .acoes-form {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* Família de Feedbacks: Toast / Notificação Flutuante Padronizada */
+.toast-notificacao {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--text-main);
+  color: var(--white);
+  padding: 0.85rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 0.9rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 /* ==========================================================================
@@ -591,7 +665,7 @@ small {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--space-3);
   font-size: 0.875rem;
   color: var(--text-muted);
 }
@@ -605,7 +679,7 @@ small {
   font-style: normal;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 
@@ -627,7 +701,7 @@ small {
 .footer-links-linha ul {
   display: flex;
   list-style: none;
-  gap: 1.25rem;
+  gap: var(--space-3);
   margin: 0;
   padding: 0;
 }
@@ -644,38 +718,124 @@ small {
 }
 
 /* ==========================================================================
-   9. RESPONSIVIDADE (MOBILE & TABLETS)
+   9. RESPONSIVIDADE E COMPORTAMENTO MOBILE DO MENU HAMBÚRGUER (max-width: 850px)
    ========================================================================== */
 @media (max-width: 850px) {
   .hero-grid,
   .transparencia-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--space-4);
   }
 
   .transparencia-cta-section {
-    padding: 1.5rem;
+    padding: var(--space-3);
   }
   
   .hero-botoes, .hero-cta, .transparencia-botoes {
     justify-content: center;
   }
 
-  .header-container {
+  /* Exibir o botão hambúrguer no mobile */
+  .menu-toggle-label {
+    display: flex;
     flex-direction: column;
-    gap: 1rem;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 101;
   }
 
-  .pilar-linha {
+  .hamburger-icon,
+  .hamburger-icon::before,
+  .hamburger-icon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .hamburger-icon {
+    position: relative;
+    top: 9px;
+  }
+
+  .hamburger-icon::before {
+    position: absolute;
+    top: -9px;
+  }
+
+  .hamburger-icon::after {
+    position: absolute;
+    top: 9px;
+  }
+
+  /* Esconder o menu de navegação por padrão no estado FECHADO */
+  .header-site nav {
+    display: none;
+    width: 100%;
+    background-color: var(--white);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    padding: var(--space-3) 0;
+  }
+
+  .nav-menu {
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    gap: var(--space-2);
+    width: 100%;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: var(--space-2);
+    width: 100%;
+  }
+
+  /* Estado ABERTO: Ativado quando o checkbox está marcado (:checked) */
+  .menu-toggle-checkbox:checked ~ nav {
+    display: block;
+  }
+
+  /* Transformação animada do ícone de hambúrguer para "X" (Estado Aberto) */
+  .menu-toggle-checkbox:checked ~ .menu-toggle-label .hamburger-icon {
+    background-color: transparent;
+  }
+
+  .menu-toggle-checkbox:checked ~ .menu-toggle-label .hamburger-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .menu-toggle-checkbox:checked ~ .menu-toggle-label .hamburger-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  /* Foco por teclado acessível no rótulo do menu hambúrguer */
+  .menu-toggle-label:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    border-radius: 4px;
   }
 
   .footer-compacto-container {
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: var(--space-2);
   }
 
   .footer-contato-linha {
@@ -685,48 +845,4 @@ small {
   .campo-grupo {
     flex: 1 1 100%;
   }
-}
-
-/* ==========================================================================
-   COMPONENTE: TOAST / NOTIFICAÇÃO FLUTUANTE
-   ========================================================================== */
-.toast-notificacao {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--text-main);
-  color: var(--white);
-  padding: 0.85rem 1.25rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  font-size: 0.9rem;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-
-/* ==========================================================================
-   COMPONENTE: BADGES DE STATUS (PÁGINA DE PROJETOS)
-   ========================================================================== */
-.badge-status {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-radius: 50px;
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.5px;
-}
-
-.badge-ativo {
-  background-color: rgba(63, 111, 79, 0.15);
-  color: var(--primary-color);
-}
-
-.badge-pausado {
-  background-color: rgba(200, 120, 74, 0.15);
-  color: var(--accent-color);
 }

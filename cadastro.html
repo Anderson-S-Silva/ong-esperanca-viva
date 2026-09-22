@@ -7,11 +7,11 @@
   <title>Cadastro de Voluntário - ONG Esperança Viva</title>
   <!-- Favicon do Site -->
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-  <link rel="stylesheet" href="assets/css/style.css?v=5.0">
+  <link rel="stylesheet" href="assets/css/style.css?v=6.0">
 </head>
 <body>
 
-  <!-- Cabeçalho Institucional Alinhado -->
+  <!-- Cabeçalho Institucional com Menu Inline (Desktop) e Hambúrguer (Mobile) -->
   <header class="header-site">
     <a href="#conteudo-principal" class="sr-only">Pular para o conteúdo principal</a>
     
@@ -20,9 +20,15 @@
         <img src="assets/img/logo.svg" alt="Logotipo da ONG Esperança Viva com duas mãos entrelaçadas formando um coração" width="180" height="60">
       </a>
 
+      <!-- Checkbox oculto para gerir o estado Aberto/Fechado via CSS -->
+      <input type="checkbox" id="menu-toggle-cadastro" class="menu-toggle-checkbox" aria-label="Abrir menu de navegação">
+      <label for="menu-toggle-cadastro" class="menu-toggle-label" tabindex="0">
+        <span class="hamburger-icon" aria-hidden="true"></span>
+      </label>
+
       <!-- Navegação Principal -->
       <nav aria-label="Navegação Principal">
-        <ul>
+        <ul class="nav-menu">
           <li><a href="index.html">Início</a></li>
           <li><a href="projetos.html">Projetos</a></li>
           <li><a href="cadastro.html" aria-current="page" class="btn-nav">Seja Voluntário</a></li>
@@ -140,7 +146,7 @@
     </div>
   </footer>
 
-  <!-- Componente Toast de Feedback -->
+  <!-- Componente Toast de Feedback Padronizado -->
   <div class="toast-notificacao" role="status" aria-live="polite">
     <span>✓</span> Cadastro realizado com sucesso!
   </div>

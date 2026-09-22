@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Site institucional da ONG Esperança Viva. Transformando vidas através da educação, combate à fome e capacitação.">
-  <title>Início - ONG Esperança Viva</title>
+  <meta name="description" content="ONG Esperança Viva - Transformando vidas através de projetos sociais, educação e apoio comunitário.">
+  <title>ONG Esperança Viva - Início</title>
+  <!-- Favicon do Site -->
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-  <link rel="stylesheet" href="assets/css/style.css?v=8.0">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
+  <!-- Cabeçalho Institucional com Menu Inline (Desktop) e Hambúrguer (Mobile) -->
   <header class="header-site">
     <a href="#conteudo-principal" class="sr-only">Pular para o conteúdo principal</a>
     <div class="container header-container">
       <a href="index.html" class="logo-container">
-        <img src="assets/img/logo.svg" alt="Logotipo da ONG Esperança Viva" width="180" height="60">
+        <img src="assets/img/logo.svg" alt="Logotipo da ONG Esperança Viva com duas mãos entrelaçadas formando um coração" width="180" height="60">
       </a>
+
+      <!-- Checkbox oculto para gerir o estado Aberto/Fechado via CSS -->
+      <input type="checkbox" id="menu-toggle-index" class="menu-toggle-checkbox" aria-label="Abrir menu de navegação">
+      <label for="menu-toggle-index" class="menu-toggle-label" tabindex="0">
+        <span class="hamburger-icon" aria-hidden="true"></span>
+      </label>
+
+      <!-- Navegação Principal -->
       <nav aria-label="Navegação Principal">
-        <ul>
+        <ul class="nav-menu">
           <li><a href="index.html" aria-current="page">Início</a></li>
           <li><a href="projetos.html">Projetos</a></li>
           <li><a href="cadastro.html" class="btn-nav">Seja Voluntário</a></li>
@@ -26,119 +36,128 @@
     </div>
   </header>
 
+  <!-- Conteúdo Principal -->
   <main id="conteudo-principal">
-    <section class="hero-section container" aria-labelledby="titulo-principal">
+    
+    <!-- Hero Section -->
+    <section class="hero-section container">
       <div class="hero-grid">
         <div class="hero-textos">
-          <span class="tag-destaque">Transformação Social e Solidariedade</span>
-          <h1 id="titulo-principal">Esperança e Oportunidades para a Nossa Comunidade</h1>
+          <span class="tag-destaque">Transformação Social</span>
+          <h1>Unidos para transformar a realidade da nossa comunidade</h1>
           <p class="hero-descricao">
-            A ONG Esperança Viva atua no fortalecimento de famílias em situação de vulnerabilidade, 
-            promovendo educação de qualidade, segurança alimentar e autonomia profissional.
+            A ONG Esperança Viva atua no apoio escolar, segurança alimentar e capacitação profissional, 
+            construindo pontes para um futuro mais digno e sustentável.
           </p>
           <div class="hero-cta">
-            <a href="cadastro.html" class="btn btn-primario">Quero me Cadastrar</a>
-            <a href="projetos.html" class="btn-link">Conhecer os Projetos &rarr;</a>
+            <a href="cadastro.html" class="btn btn-primario">Seja Voluntário</a>
+            <a href="projetos.html" class="btn-link">Conhecer Projetos &rarr;</a>
           </div>
         </div>
         <div class="hero-media">
-          <figure>
-            <img src="assets/img/voluntarios-acao.jpeg" alt="Grupo de voluntários organizando doações." width="800" height="450">
-            <figcaption class="sr-only">Voluntários reunidos em ação comunitária.</figcaption>
-          </figure>
+          <img src="assets/img/hero-ong.jpeg" alt="Voluntários da ONG sorrindo em ação comunitária." loading="lazy">
         </div>
       </div>
     </section>
 
-    <section class="metricas-banner" aria-label="Indicadores de Impacto Social">
-      <div class="container metricas-grid">
-        <div class="metrica-item">
-          <span class="metrica-numero">+1.200</span>
-          <span class="metrica-texto">Cestas básicas entregues</span>
-        </div>
-        <div class="metrica-item">
-          <span class="metrica-numero">450+</span>
-          <span class="metrica-texto">Crianças atendidas no reforço</span>
-        </div>
-        <div class="metrica-item">
-          <span class="metrica-numero">94%</span>
-          <span class="metrica-texto">Frequência escolar mantida</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="pilares-section container" aria-labelledby="titulo-pilares">
-      <div class="secao-cabecalho">
-        <span class="secao-subtitulo">Nossos Valores</span>
-        <h2 id="titulo-pilares">Como Atuamos na Comunidade</h2>
-      </div>
-      <div class="pilares-lista">
-        <article class="pilar-linha">
-          <span class="pilar-numero" aria-hidden="true">01</span>
-          <div class="pilar-info">
-            <h3>Educação Transformadora</h3>
-            <p>Apoio escolar no contraturno para garantir o desenvolvimento cognitivo e cidadão de crianças e jovens.</p>
+    <!-- Métricas de Impacto -->
+    <section class="metricas-banner" aria-label="Métricas de Impacto">
+      <div class="container">
+        <div class="metricas-grid">
+          <div class="metrica-item">
+            <span class="metrica-numero">+1.200</span>
+            <span class="metrica-texto">Cestas básicas distribuídas</span>
           </div>
-        </article>
-        <article class="pilar-linha">
-          <span class="pilar-numero" aria-hidden="true">02</span>
+          <div class="metrica-item">
+            <span class="metrica-numero">450</span>
+            <span class="metrica-texto">Crianças atendidas no reforço</span>
+          </div>
+          <div class="metrica-item">
+            <span class="metrica-numero">89%</span>
+            <span class="metrica-texto">Índice de recolocação profissional</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pilares de Atuação -->
+    <section class="pilares-section container">
+      <div class="secao-cabecalho text-center">
+        <span class="secao-subtitulo">Nossos Valores</span>
+        <h2>Como Atuamos</h2>
+      </div>
+
+      <div class="pilares-lista">
+        <div class="pilar-linha">
+          <span class="pilar-numero">01</span>
+          <div class="pilar-info">
+            <h3>Educação e Letramento</h3>
+            <p>Apoio escolar no contraturno e oficinas de leitura para garantir o desenvolvimento infantojuvenil.</p>
+          </div>
+        </div>
+
+        <div class="pilar-linha">
+          <span class="pilar-numero">02</span>
           <div class="pilar-info">
             <h3>Segurança Alimentar</h3>
-            <p>Distribuição contínua de mantimentos e orientação nutricional para famílias em vulnerabilidade extrema.</p>
+            <p>Arrecadação contínua e triagem de mantimentos para apoiar famílias em situação de vulnerabilidade.</p>
           </div>
-        </article>
-        <article class="pilar-linha">
-          <span class="pilar-numero" aria-hidden="true">03</span>
+        </div>
+
+        <div class="pilar-linha">
+          <span class="pilar-numero">03</span>
           <div class="pilar-info">
             <h3>Capacitação Profissional</h3>
-            <p>Oficinas e cursos rápidos voltados à geração de renda e autonomia no mercado de trabalho.</p>
+            <p>Cursos de informática e oficinas profissionalizantes para incentivar a autonomia financeira de jovens e adultos.</p>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
+    <!-- Depoimentos (Carrossel Automático) -->
     <section class="depoimento-section" aria-labelledby="titulo-depoimentos">
       <div class="container">
         <div class="secao-cabecalho text-center">
           <span class="secao-subtitulo">Histórias Reais</span>
-          <h2 id="titulo-depoimentos">O Impacto na Vida de Quem Participa</h2>
+          <h2 id="titulo-depoimentos">Quem faz parte da nossa história</h2>
         </div>
+
         <div class="carrossel-auto-container">
           <ul class="carrossel-auto-track">
             <li class="depoimento-card-auto">
               <blockquote>
-                <p>&ldquo;O projeto mudou a rotina dos meus filhos. O reforço escolar trouxe alegria e melhorou muito as notas na escola.&rdquo;</p>
-                <cite>&mdash; Maria Rita, Mãe de aluno atendido</cite>
+                <p>"O reforço escolar mudou a rotina do meu filho. Ele ganhou gosto pelos estudos e por ler."</p>
+                <cite>Ana Paula — Mãe de aluno atendido</cite>
               </blockquote>
             </li>
             <li class="depoimento-card-auto">
               <blockquote>
-                <p>&ldquo;Ser voluntário na Esperança Viva abriu meus olhos para a força da união comunitária. É uma experiência transformadora.&rdquo;</p>
-                <cite>&mdash; Carlos Eduardo, Voluntário de Informática</cite>
+                <p>"Ser voluntário na triagem de alimentos abriu os meus olhos para a força da solidariedade."</p>
+                <cite>Carlos Eduardo — Voluntário</cite>
               </blockquote>
             </li>
             <li class="depoimento-card-auto">
               <blockquote>
-                <p>&ldquo;Com as oficinas consegui meu primeiro emprego formal. Hoje tenho estabilidade e perspectiva de futuro.&rdquo;</p>
-                <cite>&mdash; Beatriz Souza, Ex-aluna e Empregada</cite>
+                <p>"As oficinas profissionalizantes deram-me a oportunidade de conseguir o meu primeiro emprego."</p>
+                <cite>Mariana Souza — Ex-aluna da capacitação</cite>
               </blockquote>
             </li>
             <li class="depoimento-card-auto">
               <blockquote>
-                <p>&ldquo;O projeto mudou a rotina dos meus filhos. O reforço escolar trouxe alegria e melhorou muito as notas na escola.&rdquo;</p>
-                <cite>&mdash; Maria Rita, Mãe de aluno atendido</cite>
+                <p>"O reforço escolar mudou a rotina do meu filho. Ele ganhou gosto pelos estudos e por ler."</p>
+                <cite>Ana Paula — Mãe de aluno atendido</cite>
               </blockquote>
             </li>
             <li class="depoimento-card-auto">
               <blockquote>
-                <p>&ldquo;Ser voluntário na Esperança Viva abriu meus olhos para a força da união comunitária. É uma experiência transformadora.&rdquo;</p>
-                <cite>&mdash; Carlos Eduardo, Voluntário de Informática</cite>
+                <p>"Ser voluntário na triagem de alimentos abriu os meus olhos para a força da solidariedade."</p>
+                <cite>Carlos Eduardo — Voluntário</cite>
               </blockquote>
             </li>
             <li class="depoimento-card-auto">
               <blockquote>
-                <p>&ldquo;Com as oficinas consegui meu primeiro emprego formal. Hoje tenho estabilidade e perspectiva de futuro.&rdquo;</p>
-                <cite>&mdash; Beatriz Souza, Ex-aluna e Empregada</cite>
+                <p>"As oficinas profissionalizantes deram-me a oportunidade de conseguir o meu primeiro emprego."</p>
+                <cite>Mariana Souza — Ex-aluna da capacitação</cite>
               </blockquote>
             </li>
           </ul>
@@ -146,34 +165,9 @@
       </div>
     </section>
 
-    <section class="transparencia-cta-section container" aria-labelledby="titulo-relatorio">
-      <div class="transparencia-container">
-        <div class="transparencia-grid">
-          <div class="transparencia-texto">
-            <span class="secao-subtitulo">Prestação de Contas</span>
-            <h2 id="titulo-relatorio">Relatório de Impacto e Transparência</h2>
-            <p>
-              Publicamos anualmente os resultados sociais e financeiros das nossas iniciativas. 
-              A transparência é o pilar que garante a confiança de doadores, parceiros e da comunidade atendida.
-            </p>
-            <div class="transparencia-botoes">
-              <a href="relatorio-impacto.html" target="_blank" class="btn btn-primario">Visualizar Relatório (PDF)</a>
-              <a href="cadastro.html" class="btn btn-secundario">Apoiar Novos Projetos</a>
-            </div>
-          </div>
-          <div class="transparencia-destaque-box">
-            <h3>Destaques do Último Período</h3>
-            <ul>
-              <li><strong>Educação:</strong> 94% de frequência escolar mantida pelos alunos atendidos.</li>
-              <li><strong>Alimentação:</strong> Mais de 1.200 cestas básicas e 10 toneladas de alimentos entregues.</li>
-              <li><strong>Empregabilidade:</strong> 45% dos formandos recolocados no mercado de trabalho.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
+  <!-- Rodapé Minimalista -->
   <footer class="footer-site">
     <div class="container footer-compacto-container">
       <div class="footer-copy">
@@ -181,9 +175,9 @@
       </div>
       <address class="footer-contato-linha">
         <span>Rua da Solidariedade, 123 — SP</span>
-        <span class="divisor" aria-hidden="true">•</span>
+        <span class="divisor">•</span>
         <a href="tel:+5511999998888">(11) 99999-8888</a>
-        <span class="divisor" aria-hidden="true">•</span>
+        <span class="divisor">•</span>
         <a href="mailto:contato@esperancaviva.org.br">contato@esperancaviva.org.br</a>
       </address>
       <nav class="footer-links-linha" aria-label="Links do rodapé">
